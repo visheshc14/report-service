@@ -1,4 +1,3 @@
-# ====== Builder Stage ======
 FROM golang:1.25-alpine AS builder
 
 WORKDIR /app
@@ -13,14 +12,13 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0 \
 # Ensure protoc can find the Go plugins
 ENV PATH="$PATH:$(go env GOPATH)/bin"
 
-# Copy go.mod and go.sum first for caching
 COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy project files
 COPY . .
 
-# Generate protobuf code (use sh to avoid permission issues)
+# Generate protobuf code 
 RUN sh generate.sh
 
 # Build the Go binary statically
