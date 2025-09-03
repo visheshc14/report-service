@@ -16,25 +16,32 @@ A Go service with gRPC API and cron jobs for report generation.
 - Clone the repository:
   ```bash
   git clone https://github.com/visheshc14/report-service.git
-  cd report-service
+  cd report-service```
 - Install dependencies:
   ```bash
-  go mod tidy 
+  go mod tidy``` 
 - Generate protobuf code:
   ```bash
-  ./generate.sh
+  ./generate.sh```
 - Build and run:
   ```bash
   make build
-  make run
+  make run```
 - Docker
   ```bash
   make docker-build
-  make docker-run
-    
+  make docker-run```
+
+### TESTING
+Use ``grpcurl`` to test the gRPC endpoints:
+# Health check
+```grpcurl -plaintext -d '{}' localhost:50051 report.ReportService/HealthCheck```
+# Generate report
+```grpcurl -plaintext -d '{"user_id": "test_user"}' localhost:50051 report.ReportService/GenerateReport```
+  
 ### GenerateReport
 ```protobuf
-rpc GenerateReport(GenerateReportRequest) returns (GenerateReportResponse)
+rpc GenerateReport(GenerateReportRequest) returns (GenerateReportResponse)```
 
 
 
