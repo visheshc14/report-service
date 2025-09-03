@@ -11,6 +11,32 @@ A Go service with gRPC API and cron jobs for report generation.
 - Docker containerization
 
 
+### Installation
+
+- Clone the repository:
+  ```bash
+  git clone https://github.com/visheshc14/report-service.git
+  cd report-service
+- Install dependencies:
+  ```bash
+  go mod tidy 
+- Generate protobuf code:
+  ```bash
+  ./generate.sh
+- Build and run:
+  ```bash
+  make build
+  make run
+- Docker
+  ```bash
+  make docker-build
+  make docker-run
+    
 ### GenerateReport
 ```protobuf
 rpc GenerateReport(GenerateReportRequest) returns (GenerateReportResponse)
+
+
+
+
+
