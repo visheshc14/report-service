@@ -20,7 +20,7 @@ To handle 10,000 concurrent gRPC requests per second across multiple data center
 
 ### GenerateReport
 ```protobuf
-rpc GenerateReport(GenerateReportRequest) returns (GenerateReportResponse)```
+rpc GenerateReport(GenerateReportRequest) returns (GenerateReportResponse); 
 
 
 
