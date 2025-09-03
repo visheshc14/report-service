@@ -6,6 +6,7 @@ import (
 
 	"github.com/visheshc14/report-service/internal/service"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 
 	gen "github.com/visheshc14/report-service/gen"
 )
@@ -17,6 +18,7 @@ type GRPCServer struct {
 func NewGRPCServer(reportService *service.ReportService) *GRPCServer {
 	grpcServer := grpc.NewServer()
 	gen.RegisterReportServiceServer(grpcServer, reportService)
+	reflection.Register(grpcServer)
 
 	return &GRPCServer{
 		server: grpcServer,
